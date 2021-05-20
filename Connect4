@@ -1,0 +1,39 @@
+
+#DRAW BOARD
+
+def Connect4Board(Board):
+	for row in range(13):
+		if row%2 != 0:
+			practicalRow = int((row+1)/2)
+			for column in range(15):
+				if column%2 != 0:
+					practicalColumn = int((column+1)/2)
+					print(Board[practicalColumn][practicalRow], end = "")
+				else:
+					if column != 14:
+						print("|", end = "")
+					else:
+						print("|")
+		else:
+			print("---------------")
+
+
+# #PLAYER INPUT
+Player = 1
+CurrentBoard = [[" ", " ", " ", " ", " ", " ",],[" ", " ", " ", " ", " ", " "],[" ", " ", " ", " ", " ", " "],[" ", " ", " ", " ", " ", " "],[" ", " ", " ", " ", " ", " "],[" ", " ", " ", " ", " ", " "],[" ", " ", " ", " ", " ", " "]]
+Connect4Board(CurrentBoard)
+while(True):
+	print("Player's Turn: ",Player)
+	MoveRow = (int(input("Please Select Row:\n"))-1)
+	MoveColumn = (int(input("Please Select Column:\n"))-1)
+	if Player == 1:
+		if CurrentBoard[MoveColumn][MoveRow] == " ":
+			CurrentBoard[MoveColumn][MoveRow] = "X"
+			Player = 2
+	else:
+		if CurrentBoard[MoveColumn][MoveRow] == " ":
+			CurrentBoard[MoveColumn][MoveRow] = "O"
+			Player = 1
+	Connect4Board(CurrentBoard)
+
+
